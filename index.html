@@ -6,6 +6,7 @@
   <title>VENE — Venezuela Nueva Libre y Eterna </title>
   <meta name="description" content="VENE es mucho más que un token: es una moneda de confianza, con contrato auditado públicamente y comunicación transparente. Nace para apoyar a Venezuela y construir juntos un futuro nuevo, libre y próspero. Invertir en VENE es apostar por seguridad, comunidad y el desarrollo de un país con visión de grandeza." />
   <meta name="keywords" content="VENE, token, criptomoneda, Venezuela, comunidad, Web3, DeFi" />
+  <meta name="google-site-verification" content="xe0_hZvABc_3PRCtjNffnBOmL3YEVcP0O5XFuE-lmy4" />
   <link rel="icon" type="image/png" href="logo.png" />
   <meta property="og:image" content="logo.png" />
 
@@ -33,10 +34,10 @@
     h2{margin:0 0 10px}
     .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:18px}
     .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
-    footer{border-top:1px solid rgba(255,255,255,.06);padding:26px 0;color:#9aa7b2}
-    .legal{font-size:12px;color:#b8c3cc}
-    .flex{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .disclaimer{margin-top:12px;font-size:11px;color:#999;line-height:1.4}
+    footer{border-top:1px solid rgba(255,255,255,.06);padding:20px 0;color:#9aa7b2;font-size:11px;line-height:1.4}
+    .flex{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .footer-text{max-width:1000px;margin:auto;text-align:center;color:#b8c3cc}
+    .footer-text p{margin:4px 0}
   </style>
 </head>
 <body>
@@ -125,17 +126,12 @@
   </main>
 
   <footer>
-    <div class="container">
-      <div class="flex" style="justify-content:space-between">
-        <div class="flex" style="align-items:center;gap:8px">
-          <img src="logo.png" alt="Logo VENE" class="brand-logo"/>
-          <div>© <span id="year"></span> VENE • <a href="mailto:contacto@tudominio.com">contacto@tudominio.com</a></div>
-        </div>
-        <div class="legal">Hecho con ❤️ por la comunidad VENE</div>
-      </div>
-      <div class="disclaimer">
-        <p><strong>Disclaimer:</strong> VENE es un token utilitario de comunidad. No constituye un valor, instrumento financiero ni promesa de rendimiento. Los usuarios son responsables de cumplir con las leyes de su jurisdicción. Haz tu propia investigación (DYOR). El valor de los criptoactivos puede fluctuar considerablemente.</p>
-      </div>
+    <div class="container footer-text">
+      <p>© <span id="year"></span> VENE • contacto@tudominio.com</p>
+      <p>Hecho con ❤️ por la comunidad VENE</p>
+      <p><strong>Disclaimer:</strong> VENE es un token utilitario de comunidad. No constituye un valor, instrumento financiero ni promesa de rendimiento. Los usuarios son responsables de cumplir con las leyes de su jurisdicción. Haz tu propia investigación (DYOR). El valor de los criptoactivos puede fluctuar considerablemente.</p>
+      <p><strong>Términos y Condiciones:</strong> El uso de VENE implica la aceptación de que no se garantiza retorno financiero ni asesoría de inversión. Cada usuario es responsable de cumplir con la normativa de su país.</p>
+      <p><strong>Política de Privacidad:</strong> VENE respeta la privacidad de sus usuarios. No se recopilan datos personales sin consentimiento y cualquier información compartida será utilizada solo para fines de comunicación del proyecto.</p>
     </div>
   </footer>
 
@@ -157,26 +153,56 @@
     })();
 
     async function addToWallet(){
-      if(!(window.ethereum && window.ethereum.request)){
-        alert('No se detectó un wallet. Instala MetaMask.');
+      if(!window.ethereum || !window.ethereum.request){
+        alert('No se detectó MetaMask. Instálalo desde metamask.io');
         return;
       }
+      // Asegura una URL HTTPS pública para el logo
+      const logoURL = (window.location && window.location.origin)
+        ? window.location.origin + '/logo.png'
+        : 'https://example.com/logo.png';
+
       try{
-        await window.ethereum.request({
-          method: 'wallet_addEthereumChain',
-          params: [{
-            chainId: CONFIG.CHAIN_ID,
-            chainName: 'Polygon Mainnet',
-            nativeCurrency: { name: 'MATIC', symbol: 'MATIC', decimals: 18 },
-            rpcUrls: ['https://polygon-rpc.com'],
-            blockExplorerUrls: ['https://polygonscan.com']
-          }]
-        });
-        await window.ethereum.request({
+        // 1) Añadir / cambiar a Polygon Mainnet (no falla si ya existe)
+        try{
+          await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [{
+              chainId: '0x89',
+              chainName: 'Polygon Mainnet',
+              nativeCurrency: { name: 'MATIC', symbol: 'MATIC', decimals: 18 },
+              rpcUrls: ['https://polygon-rpc.com/'],
+              blockExplorerUrls: ['https://polygonscan.com/']
+            }]
+          });
+        } catch(e) {
+          // Si el usuario ya tiene la red, seguimos; solo logueamos
+          console.debug('wallet_addEthereumChain aviso:', e?.message || e);
+        }
+
+        // 2) Añadir el token VENE al wallet
+        const wasAdded = await window.ethereum.request({
           method: 'wallet_watchAsset',
-          params: { type: 'ERC20', options: CONFIG.TOKEN }
+          params: {
+            type: 'ERC20',
+            options: {
+              address: CONFIG?.TOKEN?.address || '0x4B9b93949a98dC6264c7d1CBfAd3E56330CE886D8',
+              symbol: CONFIG?.TOKEN?.symbol || 'VENE',
+              decimals: CONFIG?.TOKEN?.decimals ?? 18,
+              image: logoURL
+            }
+          }
         });
-      }catch(e){ console.error(e); alert('No se pudo añadir el token.'); }
+
+        if(wasAdded){
+          alert('✅ VENE fue añadido a tu MetaMask.');
+        } else {
+          alert('ℹ️ Acción cancelada por el usuario.');
+        }
+      }catch(e){
+        console.error(e);
+        alert('❌ No se pudo añadir el token. Revisa la consola.');
+      }
     }
   </script>
 </body>
