@@ -3,26 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VENE — Venezuela Nueva Libre y Eterna </title>
-  <meta name="description" content="VENE es mucho más que un token: es una moneda de confianza, con contrato auditado públicamente y comunicación transparente. Nace para apoyar a Venezuela y construir juntos un futuro nuevo, libre y próspero. Invertir en VENE es apostar por seguridad, comunidad y el desarrollo de un país con visión de grandeza." />
-  <meta name="keywords" content="VENE, token, criptomoneda, Venezuela, comunidad, Web3, DeFi" />
-  <meta name="google-site-verification" content="xe0_hZvABc_3PRCtjNffnBOmL3YEVcP0O5XFuE-lmy4" />
+  <title>VENE — Venezuela Nueva Libre y Eterna</title>
+  <meta name="description" content="VENE es una moneda de confianza de la comunidad, con contrato verificado y comunicación transparente. Únete a VENE para construir una Venezuela Nueva, Libre y Eterna." />
+  <meta name="keywords" content="VENE, venecoin, token, criptomoneda, Venezuela, Polygon, DeFi, Uniswap" />
   <link rel="icon" type="image/png" href="logo.png" />
-  <meta property="og:image" content="logo.png" />
+  <meta property="og:title" content="VENE — Venezuela Nueva Libre y Eterna">
+  <meta property="og:description" content="Únete a VENE para construir una Venezuela Nueva, Libre y Eterna.">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:type" content="website">
 
   <style>
-    :root{ --bg:#0b0f14; --card:#121825; --muted:#9aa7b2; --text:#e7eef5; --pri:#f7c800; --sec:#0052b4; --acc:#d80027; }
+    :root{
+      --bg:#0b0f14;
+      --card:#121825;
+      --muted:#9aa7b2;
+      --text:#e7eef5;
+      --pri:#f7c800;
+      --sec:#0052b4; /* azul bandera */
+      --acc:#d80027; /* rojo bandera */
+    }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
     a{color:#b3d4ff;text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:1080px;margin:auto;padding:24px}
-    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(8px);background:linear-gradient(180deg,rgba(11,15,20,.9),rgba(11,15,20,.6));z-index:50;border-bottom:1px solid rgba(255,255,255,.06)}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(8px);background:linear-gradient(180deg,rgba(11,15,20,.95),rgba(11,15,20,.7));z-index:50;border-bottom:1px solid rgba(255,255,255,.06)}
     nav{display:flex;align-items:center;gap:16px;justify-content:space-between}
     .logo{display:flex;align-items:center;gap:10px}
     .brand-logo{width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.2)}
     .badge{font-size:12px;padding:.2rem .5rem;border:1px solid rgba(255,255,255,.2);border-radius:999px;color:var(--muted)}
     .btn{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(90deg,var(--sec),var(--acc));border:none;color:white;padding:.8rem 1rem;border-radius:12px;font-weight:600;cursor:pointer;box-shadow:0 6px 24px rgba(0,82,180,.25)}
+    .btn:focus{outline:2px solid rgba(255,255,255,.25);outline-offset:2px}
     .grid{display:grid;gap:20px}
     .hero{padding:56px 0;text-align:left}
     .hero h1{font-size:clamp(28px,6vw,56px);line-height:1.1;margin:10px 0 12px}
@@ -38,6 +49,20 @@
     .flex{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
     .footer-text{max-width:1000px;margin:auto;text-align:center;color:#b8c3cc}
     .footer-text p{margin:4px 0}
+    .pill{display:inline-flex;align-items:center;gap:.4rem;border:1px solid rgba(255,255,255,.15);padding:.25rem .6rem;border-radius:999px;font-size:12px}
+    .note{background:rgba(247,200,0,.14);border:1px solid rgba(247,200,0,.35);padding:8px 10px;border-radius:8px;color:#ffe28a;font-size:13px}
+    /* Banner propaganda */
+    #anuncio-liquidez .banner{
+      background:linear-gradient(90deg,var(--sec),var(--acc));
+      border-radius:16px;
+      padding:30px;
+      text-align:center;
+      box-shadow:0 6px 24px rgba(0,0,0,.4)
+    }
+    #anuncio-liquidez h2{color:white;font-size:clamp(24px,5vw,40px);margin:0 0 12px}
+    #anuncio-liquidez p{color:#f7f7f7;font-size:18px;margin:0 auto;max-width:760px}
+    /* Telegram chip */
+    .chip{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem .7rem;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);font-size:13px}
   </style>
 </head>
 <body>
@@ -50,8 +75,10 @@
           <span class="badge">Sitio oficial</span>
         </div>
         <div class="flex">
-          <a href="#comprar" class="btn">Cómo comprar</a>
-          <a href="#tokenomics" class="btn">Tokenomics</a>
+          <a href="#comprar" class="btn" aria-label="Cómo comprar">Cómo comprar</a>
+          <a href="#tokenomics" class="btn" aria-label="Tokenomics">Tokenomics</a>
+          <a href="https://www.team.finance/view-coin/0xC36442b4a4522E871399CD717aBDD847Ab11FE88?name=Uniswap%20V3%20Positions%20NFT-V1%20-%20875977&symbol=UNI-V3-POS&chainid=0x89&serviceIdx=0" class="btn" aria-label="Ver liquidez bloqueada" target="_blank" rel="nofollow noopener">Liquidez</a>
+          <a href="https://t.me/VENEcoinofficial" class="btn" target="_blank" rel="nofollow noopener" aria-label="Canal de Telegram">Telegram</a>
         </div>
       </nav>
     </div>
@@ -62,20 +89,34 @@
     <section class="hero">
       <img src="logo.png" alt="Logo VENE" class="hero-logo"/>
       <h1>VENE — Venezuela Nueva Libre y Eterna</h1>
-      <p>VENE es mucho más que un token: es una moneda de confianza, con contrato auditado públicamente y comunicación transparente. Nace para apoyar a Venezuela y construir juntos un futuro <strong>nuevo, libre y próspero</strong>. Invertir en VENE es apostar por seguridad, comunidad y el desarrollo de un país con visión de grandeza.</p>
+      <p>VENE es mucho más que un token: es una moneda de confianza, con contrato verificado públicamente y comunicación transparente. Nace para apoyar a Venezuela y construir juntos un futuro <strong>nuevo, libre y próspero</strong>.</p>
 
       <!-- Botones funcionales -->
       <div class="flex" style="margin-top:12px">
         <a href="https://polygonscan.com/token/0x4b9b9394a98dc6264c7d1cbfad3e5633c0e886d8" class="btn" target="_blank" rel="nofollow noopener">Ver en Polygonscan</a>
         <a href="https://app.uniswap.org/explore/tokens/polygon/0x4b9b9394a98dc6264c7d1cbfad3e5633c0e886d8" class="btn" target="_blank" rel="nofollow noopener">Comprar en Uniswap</a>
+        <a href="https://www.team.finance/view-coin/0xC36442b4a4522E871399CD717aBDD847Ab11FE88?name=Uniswap%20V3%20Positions%20NFT-V1%20-%20875977&symbol=UNI-V3-POS&chainid=0x89&serviceIdx=0" class="btn" aria-label="Comprobar liquidez bloqueada" target="_blank" rel="nofollow noopener">Liquidez bloqueada</a>
         <button class="btn" type="button" onclick="addToWallet()">Añadir VENE a MetaMask</button>
       </div>
       <p class="legal" style="margin-top:6px">Red: <strong>Polygon PoS</strong> • Contrato: <code class="mono">0x4B9b93949a98dC6264c7d1CBfAd3E56330CE886D8</code></p>
 
-      <!-- Imágenes principales -->
+      <!-- Imágenes principales (opcional) -->
       <div class="gallery-hero">
         <img src="imagen1.png" alt="Imagen 1" />
         <img src="imagen2.png" alt="Imagen 2" />
+      </div>
+    </section>
+
+    <!-- BANNER PROPAGANDA: Próxima inyección de liquidez -->
+    <section id="anuncio-liquidez">
+      <div class="banner">
+        <h2>🔥 Próxima Inyección de Liquidez</h2>
+        <p>El equipo de <strong>VENE</strong> realizará una nueva inyección de liquidez para fortalecer el pool y dar más solidez al proyecto.
+        Este paso se llevará a cabo <strong>apenas Venezuela quede libre</strong>, marcando el inicio de una nueva era para nuestra comunidad.</p>
+        <div style="margin-top:20px">
+          <a href="https://t.me/VENEcoinofficial" target="_blank" rel="nofollow noopener" class="btn" style="margin:5px">Únete a Telegram</a>
+        </div>
+        <p style="margin-top:15px;color:#ffe066;font-weight:bold">🌎 Unidos por una Venezuela Nueva, Libre y Eterna</p>
       </div>
     </section>
 
@@ -96,43 +137,59 @@
       </div>
     </section>
 
+    
     <!-- TOKENOMICS -->
     <section id="tokenomics">
       <h2>Tokenomics</h2>
       <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
         <div class="card">
           <h3>Suministro total</h3>
-          <p id="supplyTotal">1,000,000,000 VENE</p>
+          <p><strong>1,000,000,000 VENE</strong> (fijo, sin posibilidad de mint adicional).</p>
         </div>
+
         <div class="card">
           <h3>Distribución inicial</h3>
           <ul>
-            <li>Liquidez DEX: 50%</li>
-            <li>Comunidad / Airdrops: 25%</li>
-            <li>Tesorería / Ecosistema: 20%</li>
-            <li>Asesores / Operaciones: 5%</li>
+            <li><strong>Liquidez + Comunidad: 75%</strong><br><span class="muted">Inyectado en pools de liquidez (Uniswap/Polygon) y distribución comunitaria.</span></li>
+            <li><strong>Tesorería / Ecosistema: 20%</strong><br><span class="muted">Fondos estratégicos para desarrollo, alianzas y crecimiento.</span></li>
+            <li><strong>Asesores / Operaciones: 5%</strong><br><span class="muted">Para soporte del proyecto, asesoría y costos operativos.</span></li>
           </ul>
         </div>
+
         <div class="card">
           <h3>Transparencia</h3>
           <ul>
-            <li>Contrato verificado en explorador</li>
-            <li>Direcciones de tesorería públicas</li>
-            <li>Reporte a la comunidad</li>
+            <li><span class="pill">✅ Contrato verificado en Polygonscan</span></li>
+            <li><span class="pill">🔒 Liquidez bloqueada hasta 30 Nov 2025 en Team Finance</span></li>
+            <li><span class="pill">📢 Comunicaciones oficiales vía Telegram</span></li>
           </ul>
+        </div>
+
+        <div class="card">
+          <h3>Auditoría / Seguridad</h3>
+          <p class="muted">🔍 El contrato está verificado en Polygonscan y se planea someterlo a auditoría externa para reforzar la seguridad y brindar mayor confianza a la comunidad y a futuros exchanges.</p>
         </div>
       </div>
     </section>
+
+
+    
   </main>
 
   <footer>
     <div class="container footer-text">
       <p>© <span id="year"></span> VENE • contacto@tudominio.com</p>
       <p>Hecho con ❤️ por la comunidad VENE</p>
-      <p><strong>Disclaimer:</strong> VENE es un token utilitario de comunidad. No constituye un valor, instrumento financiero ni promesa de rendimiento. Los usuarios son responsables de cumplir con las leyes de su jurisdicción. Haz tu propia investigación (DYOR). El valor de los criptoactivos puede fluctuar considerablemente.</p>
-      <p><strong>Términos y Condiciones:</strong> El uso de VENE implica la aceptación de que no se garantiza retorno financiero ni asesoría de inversión. Cada usuario es responsable de cumplir con la normativa de su país.</p>
-      <p><strong>Política de Privacidad:</strong> VENE respeta la privacidad de sus usuarios. No se recopilan datos personales sin consentimiento y cualquier información compartida será utilizada solo para fines de comunicación del proyecto.</p>
-    </div>
+      <p><a class="chip" href="https://t.me/VENEcoinofficial" target="_blank" rel="nofollow noopener">📣 Únete a nuestro Telegram</a></p>
+      <p><strong>Disclaimer:</strong> VENE es un token utilitario de comunidad. No constituye un valor, instrumento financiero ni promesa de rendimiento. DYOR.</p>
+    
+      <div style="margin-top:20px;display:flex;justify-content:center;align-items:center">
+        <a href="https://www.team.finance/view-coin/0xC36442b4a4522E871399CD717aBDD847Ab11FE88?chainid=0x89" target="_blank" rel="nofollow noopener">
+          <img src="tf-token-secured-primary-blue.png" alt="Token secured by Team Finance" style="max-width:240px;height:auto">
+        </a>
+      </div>
+
+  </div>
   </footer>
 
   <script>
@@ -157,13 +214,12 @@
         alert('No se detectó MetaMask. Instálalo desde metamask.io');
         return;
       }
-      // Asegura una URL HTTPS pública para el logo
       const logoURL = (window.location && window.location.origin)
         ? window.location.origin + '/logo.png'
         : 'https://example.com/logo.png';
 
       try{
-        // 1) Añadir / cambiar a Polygon Mainnet (no falla si ya existe)
+        // 1) Asegurar Polygon Mainnet
         try{
           await window.ethereum.request({
             method: 'wallet_addEthereumChain',
@@ -175,20 +231,17 @@
               blockExplorerUrls: ['https://polygonscan.com/']
             }]
           });
-        } catch(e) {
-          // Si el usuario ya tiene la red, seguimos; solo logueamos
-          console.debug('wallet_addEthereumChain aviso:', e?.message || e);
-        }
+        } catch(e) { console.debug('wallet_addEthereumChain aviso:', e?.message || e); }
 
-        // 2) Añadir el token VENE al wallet
+        // 2) Añadir token
         const wasAdded = await window.ethereum.request({
           method: 'wallet_watchAsset',
           params: {
             type: 'ERC20',
             options: {
-              address: CONFIG?.TOKEN?.address || '0x4B9b93949a98dC6264c7d1CBfAd3E56330CE886D8',
-              symbol: CONFIG?.TOKEN?.symbol || 'VENE',
-              decimals: CONFIG?.TOKEN?.decimals ?? 18,
+              address: CONFIG?.TOKEN?.address,
+              symbol: CONFIG?.TOKEN?.symbol,
+              decimals: CONFIG?.TOKEN?.decimals,
               image: logoURL
             }
           }
