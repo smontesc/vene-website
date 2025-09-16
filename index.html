@@ -124,20 +124,55 @@
     <section id="comprar">
       <h2>¿Cómo comprar VENE?</h2>
       <div class="card">
+        <h3>Paso 1 — Compra POL</h3>
+        <p>
+          En <strong>Uniswap Wallet</strong> toca <strong>Buy / Sell</strong> y selecciona el token 
+          <img src="polygon-pol.png" alt="Polygon (POL)" style="width:20px;height:20px;border-radius:4px;vertical-align:middle;border:1px solid rgba(255,255,255,.2)"> 
+          <strong>Polygon (POL)</strong>.
+        </p>
         <ol>
-          <li>Instala <a href="https://metamask.io/" target="_blank" rel="nofollow noopener">MetaMask</a> u otro wallet compatible con Polygon.</li>
-          <li>Conecta tu wallet a la red <strong>Polygon PoS (Mainnet)</strong>.</li>
-          <li>Haz clic en <em>Comprar en Uniswap</em> y selecciona el par <code>VENE/USDT</code> o <code>VENE/MATIC</code>.</li>
-          <li>Confirma la transacción en tu wallet.</li>
+          <li>Compra la cantidad que quieras de <strong>POL</strong> (deja ~0.1 POL para comisiones).</li>
+          <li>O envía POL desde un exchange a tu billetera <em>(retiro en red Polygon)</em>.</li>
         </ol>
+        <div class="note" style="margin-top:8px">
+          <strong>Nota:</strong> Si aún no tienes ninguna billetera, debes crear una en la app oficial de <strong>Uniswap Wallet</strong> y guardar tu frase secreta de manera segura.
+        </div>
+
+        <h3>Paso 2 — Encuentra la moneda VENE</h3>
+        <ol>
+          <li>Abre <a href="https://app.uniswap.org" target="_blank" rel="noopener">app.uniswap.org</a> desde tu navegador <u>o directamente desde la app de Uniswap</u> y conecta <strong>Uniswap Wallet</strong>.</li>
+          <li>En “Seleccionar token” busca <strong>VENE</strong> o pega el contrato oficial:</li>
+        </ol>
+        <p style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <code class="mono">0x4B9b9394a98dC6264c7d1CBfAd3E5633C0E886D8</code>
+          <button type="button"
+                  onclick="navigator.clipboard.writeText('0x4B9b9394a98dC6264c7d1CBfAd3E5633C0E886D8'); this.textContent='Copiado ✓'; setTimeout(()=>this.textContent='Copiar',1500)"
+                  style="margin-left:4px;background:#1f2937;color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:6px 10px;cursor:pointer;">
+            Copiar
+          </button>
+          <a href="https://polygonscan.com/token/0x4B9b9394a98dC6264c7d1CBfAd3E5633C0E886D8" target="_blank" rel="noopener"
+             style="margin-left:6px;color:#b3d4ff;text-decoration:underline">Ver en Polygonscan</a>
+        </p>
         <div class="flex" style="margin-top:10px">
-          <a href="https://app.uniswap.org/explore/tokens/polygon/0x4b9b9394a98dc6264c7d1cbfad3e5633c0e886d8" class="btn" target="_blank" rel="nofollow noopener">Abrir en Uniswap</a>
-          <button class="btn" type="button" onclick="addToWallet()">Añadir a MetaMask</button>
+          <a href="https://app.uniswap.org/swap?chain=polygon&outputCurrency=0x4B9b9394a98dC6264c7d1CBfAd3E5633C0E886D8" class="btn" target="_blank" rel="noopener">Abrir Uniswap con VENE</a>
+          <a href="https://dexscreener.com/polygon/0x4B9b9394a98dC6264c7d1CBfAd3E5633C0E886D8" class="btn secondary" target="_blank" rel="noopener">Ver par en DexScreener</a>
+        </div>
+
+        <h3>Paso 3 — Decide tu apoyo y confirma</h3>
+        <ol>
+          <li>Elige cuánto <strong>POL</strong> (o USDT) quieres cambiar por VENE.</li>
+          <li>Si el swap falla, sube el <em>slippage</em> de forma gradual (1% → 2% → 3%).</li>
+          <li>Haz clic en <strong>Swap</strong> y confirma en Uniswap Wallet.</li>
+          <li>Si no ves VENE en tu wallet, impórtalo pegando el contrato anterior.</li>
+        </ol>
+
+        <div class="note" style="margin-top:10px">
+          <strong>Importante:</strong> opera siempre en <strong>Polygon (PoS) Mainnet</strong> y usa el token <strong>Polygon (POL)</strong> para comisiones.
+          Mantén un pequeño saldo (~0.1 POL) para el gas. Verifica que el <em>contract address</em> coincida exactamente con el mostrado arriba.
         </div>
       </div>
     </section>
 
-    
     <!-- TOKENOMICS -->
     <section id="tokenomics">
       <h2>Tokenomics</h2>
